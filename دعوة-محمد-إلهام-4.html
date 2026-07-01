@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>محمد & إلهام | دعوة زفاف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf6ee;
+    --cream-deep:#f1e8d8;
+    --gold:#b8925a;
+    --gold-deep:#8a6a3a;
+    --gold-light:#e2c48f;
+    --ink:#3c3226;
+    --rose:#c98a8a;
+    --line: rgba(138,106,58,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Amiri', serif;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* subtle paper texture + vignette */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(184,146,90,0.10), transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(184,146,90,0.10), transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .container{
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+    z-index:1;
+  }
+
+  /* Floating petals */
+  .petals{
+    position:fixed; inset:0; pointer-events:none; z-index:2; overflow:hidden;
+  }
+  .petal{
+    position:absolute; top:-5%;
+    width:14px; height:14px;
+    background: radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold) 70%);
+    border-radius: 0 100% 0 100%;
+    opacity:0.55;
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(115vh) rotate(300deg); }
+  }
+
+  section{
+    position:relative;
+    padding: 64px 28px;
+    text-align:center;
+    min-height: 100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    scroll-snap-align: start;
+  }
+  html, body{
+    scroll-snap-type: y proximity;
+  }
+
+  .more-btn{
+    margin-top: 40px;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-family:'Reem Kufi', sans-serif;
+    font-size: 13px;
+    letter-spacing:1px;
+    color: var(--gold-deep);
+    opacity:0;
+    animation: riseIn 1s ease forwards;
+    animation-delay: 1.8s;
+  }
+  .more-btn .arrow{
+    font-size: 20px;
+    color: var(--gold);
+    animation: bob 2s ease-in-out infinite;
+  }
+  .more-btn:hover{ color: var(--gold); }
+
+  .ornament{
+    width:120px; height:auto;
+    margin: 0 auto 18px;
+    opacity:0.9;
+  }
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    margin: 22px auto;
+    color: var(--gold-deep);
+  }
+  .divider::before, .divider::after{
+    content:"";
+    height:1px; width:56px;
+    background: linear-gradient(90deg, transparent, var(--line));
+  }
+  .divider::after{ background: linear-gradient(90deg, var(--line), transparent); }
+  .diamond{ font-size:11px; transform: rotate(45deg); display:inline-block; color: var(--gold);}
+
+  /* HERO */
+  .hero{
+    min-height: 100svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding: 40px 24px;
+  }
+  .hero-frame{
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    padding: 46px 26px;
+    position:relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.05));
+  }
+  .hero-frame::before, .hero-frame::after{
+    content:"";
+    position:absolute; width:34px; height:34px;
+    border: 1.5px solid var(--gold);
+    opacity:0.8;
+  }
+  .hero-frame::before{ top:-8px; right:-8px; border-bottom:none; border-left:none; }
+  .hero-frame::after{ bottom:-8px; left:-8px; border-top:none; border-right:none; }
+
+  .eyebrow{
+    font-family: 'Reem Kufi', sans-serif;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    opacity:0;
+    animation: riseIn 1s ease forwards;
+    animation-delay: 0.2s;
+  }
+  .dua{
+    font-size: 15px;
+    color: var(--ink);
+    margin-top: 14px;
+    line-height:2;
+    opacity:0.85;
+    opacity:0;
+    animation: riseIn 1s ease forwards;
+    animation-delay: 0.4s;
+  }
+  .families{
+    margin-top: 26px;
+    font-size: 14px;
+    line-height: 2.1;
+    color: var(--ink);
+    opacity:0;
+    animation: riseIn 1s ease forwards;
+    animation-delay: 0.6s;
+  }
+  .families b{ color: var(--gold-deep); font-weight:700; }
+
+  .names{
+    margin-top: 30px;
+    font-family: 'Aref Ruqaa', serif;
+    font-weight:700;
+    font-size: clamp(46px, 14vw, 68px);
+    color: var(--gold-deep);
+    line-height:1.3;
+    opacity:0;
+    animation: riseIn 1.2s ease forwards;
+    animation-delay: 0.9s;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .names .amp{
+    display:block;
+    font-size: 0.5em;
+    color: var(--gold);
+    margin: 2px 0;
+  }
+
+  .invite-line{
+    margin-top: 26px;
+    font-size: 15px;
+    color: var(--ink);
+    opacity:0;
+    animation: riseIn 1s ease forwards;
+    animation-delay: 1.2s;
+  }
+
+  .scroll-hint{
+    margin-top: 34px;
+    font-size: 22px;
+    color: var(--gold);
+    animation: bob 2s ease-in-out infinite;
+    opacity:0;
+    animation: riseIn 1s ease forwards, bob 2s ease-in-out infinite;
+    animation-delay: 1.6s, 2.4s;
+  }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform: translateY(18px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(8px); }
+  }
+
+  /* SECTION HEADINGS */
+  h2.section-title{
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 30px;
+    color: var(--gold-deep);
+    font-weight:700;
+  }
+  .section-sub{
+    font-size:14px;
+    color: var(--ink);
+    opacity:0.75;
+    margin-top:6px;
+  }
+
+  /* COUNTDOWN */
+  .countdown-wrap{
+    background: linear-gradient(180deg, var(--cream-deep), var(--cream));
+  }
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .cd-box{
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 10px;
+    min-width: 68px;
+    box-shadow: 0 6px 18px rgba(138,106,58,0.08);
+  }
+  .cd-num{
+    font-family:'Reem Kufi', sans-serif;
+    font-size: 26px;
+    color: var(--gold-deep);
+    font-weight:600;
+  }
+  .cd-label{
+    font-size: 11px;
+    margin-top: 4px;
+    color: var(--ink);
+    opacity:0.7;
+  }
+
+  /* DETAILS */
+  .details-wrap{
+    background: var(--cream);
+  }
+  .detail-card{
+    margin-top: 30px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px 20px;
+    box-shadow: 0 8px 24px rgba(138,106,58,0.07);
+    text-align:center;
+  }
+  .detail-icon{
+    font-size: 26px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .detail-title{
+    font-family:'Reem Kufi', sans-serif;
+    font-size: 16px;
+    color: var(--gold-deep);
+    font-weight:600;
+  }
+  .detail-text{
+    margin-top: 8px;
+    font-size: 16px;
+    line-height:1.9;
+  }
+  .btn{
+    display:inline-block;
+    margin-top: 16px;
+    padding: 10px 22px;
+    border: 1px solid var(--gold);
+    color: var(--gold-deep);
+    border-radius: 30px;
+    font-family:'Reem Kufi', sans-serif;
+    font-size: 13px;
+    text-decoration:none;
+    transition: all .25s ease;
+  }
+  .btn:hover{ background: var(--gold); color:#fff; }
+
+  /* RSVP */
+  .rsvp-wrap{
+    background: linear-gradient(180deg, var(--cream), var(--cream-deep));
+  }
+  form{
+    margin-top: 30px;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+    text-align: right;
+  }
+  label{
+    font-size: 13px;
+    color: var(--gold-deep);
+    font-family:'Reem Kufi', sans-serif;
+    margin-bottom: 6px;
+    display:block;
+  }
+  input, select{
+    width:100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    font-family:'Amiri', serif;
+    font-size: 15px;
+    color: var(--ink);
+    outline:none;
+    transition: border-color .2s ease;
+  }
+  input:focus, select:focus{ border-color: var(--gold); }
+  .radio-group{
+    display:flex; gap:10px;
+  }
+  .radio-opt{
+    flex:1;
+    text-align:center;
+    padding: 12px 6px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor:pointer;
+    font-size: 14px;
+    transition: all .2s ease;
+    background:#fff;
+  }
+  .radio-opt input{ display:none; width:auto; }
+  .radio-opt.selected{
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+  }
+  .submit-btn{
+    margin-top: 6px;
+    padding: 14px;
+    background: var(--gold-deep);
+    color: #fff;
+    border:none;
+    border-radius: 8px;
+    font-family:'Reem Kufi', sans-serif;
+    font-size: 15px;
+    cursor:pointer;
+    transition: background .2s ease;
+  }
+  .submit-btn:hover{ background: var(--gold); }
+  .rsvp-success{
+    display:none;
+    margin-top: 30px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .rsvp-success.show{ display:block; animation: riseIn .6s ease forwards; }
+  .rsvp-success .check{
+    font-size: 34px;
+    color: var(--gold);
+  }
+
+  footer{
+    padding: 40px 24px 60px;
+    text-align:center;
+  }
+  footer .names-small{
+    font-family:'Aref Ruqaa', serif;
+    font-size: 22px;
+    color: var(--gold-deep);
+  }
+  footer .sub{
+    margin-top: 6px;
+    font-size: 12px;
+    opacity:0.6;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition:none !important; }
+  }
+
+  /* COVER PAGE */
+  #cover{
+    position:fixed; inset:0;
+    z-index: 50;
+    background: #fffdfa;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+  }
+  #cover.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .cover-panel{
+    position:relative;
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cover-stripe{
+    position:absolute;
+    top:0; bottom:0;
+    left:50%;
+    width: 2px;
+    background: var(--rose);
+    opacity:0.5;
+  }
+  .cover-florals{
+    position:absolute;
+    width: 220px;
+    max-width: 55vw;
+    opacity:0.95;
+  }
+  .cover-florals.top-right{ top:-30px; right:-40px; transform: rotate(8deg); }
+  .cover-florals.bottom-left{ bottom:-30px; left:-40px; transform: rotate(188deg); }
+
+  .cover-seal{
+    position:relative;
+    z-index:2;
+    width: 132px; height:132px;
+    border-radius:50%;
+    border: 2px solid var(--gold);
+    background: radial-gradient(circle, #fffefb, #fbf3e6);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    cursor:pointer;
+    box-shadow: 0 8px 28px rgba(184,146,90,0.35);
+    animation: pulseSeal 2.4s ease-in-out infinite;
+  }
+  .cover-seal:active{ transform: scale(0.96); }
+  .cover-seal .seal-title{
+    font-family:'Aref Ruqaa', serif;
+    font-weight:700;
+    font-size: 17px;
+    color: var(--gold-deep);
+  }
+  .cover-seal .seal-sub{
+    margin-top:4px;
+    font-size: 10px;
+    letter-spacing:1px;
+    color: var(--gold);
+    font-family:'Reem Kufi', sans-serif;
+  }
+  @keyframes pulseSeal{
+    0%,100%{ box-shadow: 0 8px 28px rgba(184,146,90,0.35); }
+    50%{ box-shadow: 0 8px 40px rgba(184,146,90,0.55); }
+  }
+
+  #main-content{
+    opacity:0;
+    transition: opacity 0.8s ease;
+  }
+  #main-content.revealed{
+    opacity:1;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div id="cover">
+  <div class="cover-panel">
+    <div class="cover-stripe"></div>
+    <svg class="cover-florals top-right" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.9">
+        <ellipse cx="150" cy="40" rx="22" ry="16" fill="#d98fa3"/>
+        <ellipse cx="168" cy="55" rx="18" ry="13" fill="#e3a8b8"/>
+        <ellipse cx="140" cy="60" rx="16" ry="12" fill="#c9738d"/>
+        <ellipse cx="120" cy="30" rx="14" ry="10" fill="#e8c2cf"/>
+        <path d="M100 20 Q110 5 130 10" stroke="#b8925a" stroke-width="2" fill="none"/>
+        <path d="M95 25 Q100 15 90 5" stroke="#b8925a" stroke-width="2" fill="none"/>
+        <circle cx="175" cy="75" r="6" fill="#e3a8b8"/>
+        <circle cx="190" cy="90" r="5" fill="#d98fa3"/>
+      </g>
+    </svg>
+    <svg class="cover-florals bottom-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.9">
+        <ellipse cx="150" cy="40" rx="22" ry="16" fill="#d98fa3"/>
+        <ellipse cx="168" cy="55" rx="18" ry="13" fill="#e3a8b8"/>
+        <ellipse cx="140" cy="60" rx="16" ry="12" fill="#c9738d"/>
+        <ellipse cx="120" cy="30" rx="14" ry="10" fill="#e8c2cf"/>
+        <path d="M100 20 Q110 5 130 10" stroke="#b8925a" stroke-width="2" fill="none"/>
+        <path d="M95 25 Q100 15 90 5" stroke="#b8925a" stroke-width="2" fill="none"/>
+        <circle cx="175" cy="75" r="6" fill="#e3a8b8"/>
+        <circle cx="190" cy="90" r="5" fill="#d98fa3"/>
+      </g>
+    </svg>
+
+    <div class="cover-seal" id="cover-seal" role="button" aria-label="افتح الدعوة">
+      <div class="seal-title">افتح</div>
+      <div class="seal-title">الدعوة</div>
+      <div class="seal-sub">اضغط هنا</div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+
+<div class="petals" id="petals"></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-frame">
+      <div class="eyebrow">بحمد الله وتوفيقه</div>
+      <div class="dua">
+        بارك الله لهما وبارك عليهما<br>
+        وجمع بينهما في خير
+      </div>
+
+      <div class="families">
+        تتشرف عائلتا<br>
+        <b>السيد محمد النعيمي</b><br>
+        و<br>
+        <b>السيد إلهام العامري</b>
+      </div>
+
+      <div class="invite-line">بدعوتكم لحضور حفل زفاف نجليهما</div>
+
+      <div class="names">
+        محمد
+        <span class="amp">&</span>
+        إلهام
+      </div>
+
+    </div>
+
+    <button class="more-btn" onclick="document.getElementById('sec-countdown').scrollIntoView({behavior:'smooth'})">
+      شاهد المزيد
+      <span class="arrow">︾</span>
+    </button>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-wrap" id="sec-countdown">
+    <div class="divider"><span class="diamond">◆</span></div>
+    <h2 class="section-title">العد التنازلي</h2>
+    <div class="section-sub">لحظات تفصلنا عن اللقاء</div>
+
+    <div class="countdown" id="countdown">
+      <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-label">يوم</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">ساعة</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">دقيقة</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">ثانية</div></div>
+    </div>
+
+    <button class="more-btn" onclick="document.getElementById('sec-details').scrollIntoView({behavior:'smooth'})">
+      شاهد المزيد
+      <span class="arrow">︾</span>
+    </button>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="details-wrap" id="sec-details">
+    <div class="divider"><span class="diamond">◆</span></div>
+    <h2 class="section-title">تفاصيل الحفل</h2>
+    <div class="section-sub">ننتظر حضوركم بشوق</div>
+
+    <div class="detail-card">
+      <div class="detail-icon">📅</div>
+      <div class="detail-title">التاريخ والوقت</div>
+      <div class="detail-text" id="event-date-text">سيُحدد قريباً</div>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">📍</div>
+      <div class="detail-title">المكان</div>
+      <div class="detail-text" id="event-venue-text">سيُحدد قريباً</div>
+      <a href="#" class="btn" id="map-link" target="_blank" rel="noopener">فتح الموقع على الخريطة</a>
+    </div>
+
+    <button class="more-btn" onclick="document.getElementById('sec-rsvp').scrollIntoView({behavior:'smooth'})">
+      شاهد المزيد
+      <span class="arrow">︾</span>
+    </button>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp-wrap" id="sec-rsvp">
+    <div class="divider"><span class="diamond">◆</span></div>
+    <h2 class="section-title">تأكيد الحضور</h2>
+    <div class="section-sub">نرجو تأكيد حضوركم قبل الموعد</div>
+
+    <form id="rsvp-form">
+      <div>
+        <label for="name">الاسم الكامل</label>
+        <input type="text" id="name" required placeholder="اكتب اسمك هنا">
+      </div>
+
+      <div>
+        <label>هل ستحضر؟</label>
+        <div class="radio-group">
+          <label class="radio-opt" id="opt-yes">
+            <input type="radio" name="attend" value="yes" required>
+            نعم، بكل سرور
+          </label>
+          <label class="radio-opt" id="opt-no">
+            <input type="radio" name="attend" value="no">
+            آسف، لن أستطيع
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <label for="guests">عدد المرافقين</label>
+        <select id="guests">
+          <option value="0">بمفردي</option>
+          <option value="1">+1</option>
+          <option value="2">+2</option>
+          <option value="3">+3</option>
+          <option value="4">+4 فأكثر</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="phone">رقم الهاتف (اختياري)</label>
+        <input type="tel" id="phone" placeholder="XX XXX XXX">
+      </div>
+
+      <button type="submit" class="submit-btn">إرسال التأكيد</button>
+    </form>
+
+    <div class="rsvp-success" id="rsvp-success">
+      <div class="check">✓</div>
+      <div style="margin-top:10px; font-family:'Reem Kufi',sans-serif; color:var(--gold-deep); font-size:16px;">
+        شكراً لتأكيدكم!
+      </div>
+      <div style="margin-top:6px; font-size:14px; opacity:0.8;">
+        بانتظاركم يوم الفرح إن شاء الله
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="divider"><span class="diamond">◆</span></div>
+    <div class="names-small">محمد & إلهام</div>
+    <div class="sub">بحمد الله يتم هذا الاجتماع الطيب</div>
+  </footer>
+
+</div>
+
+</div>
+
+<script>
+  // ---- CONFIG: تبدل هذي القيم بالمعلومات الحقيقية ----
+  const CONFIG = {
+    eventDateISO: "2026-09-18T19:00:00",   // مؤقت - بدلها بتاريخ العرس الحقيقي
+    eventDateText: "الجمعة 18 سبتمبر 2026 - الساعة 7 مساءً",
+    venueName: "قاعة الأفراح (اسم مؤقت)",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mohammedia+Ben+Arous"
+  };
+
+  document.getElementById('event-date-text').textContent = CONFIG.eventDateText;
+  document.getElementById('event-venue-text').textContent = CONFIG.venueName;
+  document.getElementById('map-link').href = CONFIG.mapsUrl;
+
+  // Countdown
+  const target = new Date(CONFIG.eventDateISO).getTime();
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = target - now;
+    if(diff <= 0){
+      document.getElementById('countdown').innerHTML = '<div style="font-size:16px;">اليوم هو يوم الفرح 🎉</div>';
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Radio styling
+  document.querySelectorAll('.radio-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      document.querySelectorAll('.radio-opt').forEach(o=>o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+
+  // RSVP form (client-side only demo)
+  document.getElementById('rsvp-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('rsvp-success').classList.add('show');
+  });
+
+  // Cover page reveal
+  document.getElementById('cover-seal').addEventListener('click', function(){
+    document.getElementById('cover').classList.add('hidden');
+    document.getElementById('main-content').classList.add('revealed');
+    document.body.style.overflow = 'auto';
+  });
+
+  // Floating petals
+  const petalContainer = document.getElementById('petals');
+  const petalCount = window.innerWidth < 500 ? 14 : 22;
+  for(let i=0;i<petalCount;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (8 + Math.random()*10) + 's';
+    p.style.animationDelay = (Math.random()*10) + 's';
+    p.style.width = p.style.height = (8 + Math.random()*10) + 'px';
+    p.style.opacity = 0.25 + Math.random()*0.4;
+    petalContainer.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
