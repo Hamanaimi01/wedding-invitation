@@ -1,84 +1,243 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>دعوة زفاف</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+
+background:#fff8fb;
+overflow:hidden;
+height:100vh;
+
+}
+
+.page{
+
+position:relative;
+width:100%;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-background:#fff5f8;
-font-family:Arial;
-overflow:hidden;
+
 }
 
-#card{
-width:320px;
-height:500px;
+.flower-right{
+
+position:absolute;
+top:0;
+right:0;
+width:180px;
+opacity:.95;
+
+}
+
+.flower-left{
+
+position:absolute;
+bottom:0;
+left:0;
+width:140px;
+opacity:.75;
+transform:rotate(180deg);
+
+}
+
+.envelope{
+
+position:relative;
+width:340px;
+height:520px;
 background:white;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
+border-radius:28px;
+box-shadow:0 18px 40px rgba(0,0,0,.15);
+overflow:hidden;
+
+}
+
+.cover{
+
+position:absolute;
+inset:0;
+background:white;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+z-index:5;
+transition:.4s;
+
+}
+
+.cover h1{
+
+font-size:42px;
+color:#d86d9d;
+margin-bottom:20px;
+
+}
+
+.cover p{
+
+font-size:19px;
+color:#777;
+
+}
+
+.swipe{
+
+margin-top:35px;
+width:140px;
+height:5px;
+background:#f3c4d8;
+border-radius:50px;
+position:relative;
+
+}
+
+.swipe::after{
+
+content:"";
+position:absolute;
+left:0;
+top:-5px;
+width:28px;
+height:15px;
+background:#e66fa2;
+border-radius:20px;
+animation:move 1.3s infinite;
+
+}
+
+@keyframes move{
+
+0%{left:0;}
+100%{left:112px;}
+
+}
+
+.card{
+
+position:absolute;
+left:0;
+top:100%;
+width:100%;
+height:100%;
+background:white;
+padding:45px;
 transition:1s;
-cursor:pointer;
+
 }
 
-h1{
-color:#d63384;
-margin:10px;
-}
+.card h2{
 
-p{
-font-size:20px;
-}
-
-#inside{
-display:none;
 text-align:center;
-padding:20px;
+color:#d86d9d;
+font-size:36px;
+margin-top:40px;
+
 }
+
+.card h3{
+
+text-align:center;
+margin-top:18px;
+font-size:28px;
+font-weight:500;
+
+}
+
+.card p{
+
+text-align:center;
+margin-top:20px;
+font-size:21px;
+color:#666;
+
+}
+
+.open{
+
+top:0!important;
+
+}
+
+.hide{
+
+opacity:0;
+pointer-events:none;
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div id="card">
+<div class="page">
 
-<div id="cover">
+<img class="flower-right" src="https://png.pngtree.com/png-clipart/20240306/original/pngtree-watercolor-pink-flower-clipart-png-image_14506966.png">
+
+<img class="flower-left" src="https://png.pngtree.com/png-clipart/20240306/original/pngtree-watercolor-pink-flower-clipart-png-image_14506966.png">
+
+<div class="envelope">
+
+<div class="cover" id="cover">
+
 <h1>💌</h1>
-<p>اسحب أو اضغط لفتح الدعوة</p>
+
+<p>اسحب لفتح الدعوة</p>
+
+<div class="swipe"></div>
+
 </div>
 
-<div id="inside">
-<h1>محمد النعيمي</h1>
-<h2>🤍</h2>
-<h1>إلهام العامري</h1>
+<div class="card" id="card">
 
-<p>📅 08/08/2027</p>
-<p>📍 المحمدية</p>
+<h2>محمد النعيمي</h2>
+
+<h3>🤍</h3>
+
+<h2>إلهام العامري</h2>
+
+<p>08 / 08 / 2027</p>
+
+<p>الساعة 19:00</p>
+
+<p>المحمدية</p>
+
+</div>
+
 </div>
 
 </div>
 
 <script>
 
-let card=document.getElementById("card");
+const cover=document.getElementById("cover");
+const card=document.getElementById("card");
 
-card.onclick=function(){
+cover.addEventListener("click",()=>{
 
-document.getElementById("cover").style.display="none";
-document.getElementById("inside").style.display="block";
+cover.classList.add("hide");
+card.classList.add("open");
 
-}
+});
 
 </script>
 
