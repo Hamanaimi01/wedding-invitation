@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<style>
+body{
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#fff5f8;
+font-family:Arial;
+overflow:hidden;
+}
+
+#card{
+width:320px;
+height:500px;
+background:white;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
+cursor:pointer;
+}
+
+h1{
+color:#d63384;
+margin:10px;
+}
+
+p{
+font-size:20px;
+}
+
+#inside{
+display:none;
+text-align:center;
+padding:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="card">
+
+<div id="cover">
+<h1>💌</h1>
+<p>اسحب أو اضغط لفتح الدعوة</p>
+</div>
+
+<div id="inside">
+<h1>محمد النعيمي</h1>
+<h2>🤍</h2>
+<h1>إلهام العامري</h1>
+
+<p>📅 08/08/2027</p>
+<p>📍 المحمدية</p>
+</div>
+
+</div>
+
+<script>
+
+let card=document.getElementById("card");
+
+card.onclick=function(){
+
+document.getElementById("cover").style.display="none";
+document.getElementById("inside").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
