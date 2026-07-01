@@ -1,225 +1,124 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دعوة زفاف</title>
+<title>محمد النعيمي ❤️ إلهام العامري</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Cairo',sans-serif;
-}
-
-body{
-
-background:#fff8fb;
-overflow:hidden;
-height:100vh;
-
-}
-
-.page{
-
-position:relative;
-width:100%;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-
-}
-
-.flower-right{
-
-position:absolute;
-top:0;
-right:0;
-width:180px;
-opacity:.95;
-
-}
-
-.flower-left{
-
-position:absolute;
-bottom:0;
-left:0;
-width:140px;
-opacity:.75;
-transform:rotate(180deg);
-
-}
-
-.envelope{
-
-position:relative;
-width:340px;
-height:520px;
-background:white;
-border-radius:28px;
-box-shadow:0 18px 40px rgba(0,0,0,.15);
-overflow:hidden;
-
-}
-
-.cover{
-
-position:absolute;
-inset:0;
-background:white;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:5;
-transition:.4s;
-
-}
-
-.cover h1{
-
-font-size:42px;
-color:#d86d9d;
-margin-bottom:20px;
-
-}
-
-.cover p{
-
-font-size:19px;
-color:#777;
-
-}
-
-.swipe{
-
-margin-top:35px;
-width:140px;
-height:5px;
-background:#f3c4d8;
-border-radius:50px;
-position:relative;
-
-}
-
-.swipe::after{
-
-content:"";
-position:absolute;
-left:0;
-top:-5px;
-width:28px;
-height:15px;
-background:#e66fa2;
-border-radius:20px;
-animation:move 1.3s infinite;
-
-}
-
-@keyframes move{
-
-0%{left:0;}
-100%{left:112px;}
-
-}
-
-.card{
-
-position:absolute;
-left:0;
-top:100%;
-width:100%;
-height:100%;
-background:white;
-padding:45px;
-transition:1s;
-
-}
-
-.card h2{
-
-text-align:center;
-color:#d86d9d;
-font-size:36px;
-margin-top:40px;
-
-}
-
-.card h3{
-
-text-align:center;
-margin-top:18px;
-font-size:28px;
-font-weight:500;
-
-}
-
-.card p{
-
-text-align:center;
-margin-top:20px;
-font-size:21px;
-color:#666;
-
-}
-
-.open{
-
-top:0!important;
-
-}
-
-.hide{
-
-opacity:0;
-pointer-events:none;
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="page">
+<div class="loading">
 
-<img class="flower-right" src="https://png.pngtree.com/png-clipart/20240306/original/pngtree-watercolor-pink-flower-clipart-png-image_14506966.png">
+<div class="loader"></div>
 
-<img class="flower-left" src="https://png.pngtree.com/png-clipart/20240306/original/pngtree-watercolor-pink-flower-clipart-png-image_14506966.png">
+<p>Loading...</p>
 
-<div class="envelope">
+</div>
+
+<div id="app">
+
+<!-- Flowers -->
+
+<img
+class="flower flower-top"
+src="assets/flower-top.svg"
+alt="flower">
+
+<img
+class="flower flower-bottom"
+src="assets/flower-bottom.svg"
+alt="flower">
+
+<!-- Invitation -->
+
+<div class="invitation">
 
 <div class="cover" id="cover">
 
-<h1>💌</h1>
+<div class="cover-content">
+
+<h1>دعوة زفاف</h1>
 
 <p>اسحب لفتح الدعوة</p>
 
-<div class="swipe"></div>
+<div class="swipe">
+
+<div class="swipe-circle"></div>
+
+</div>
+
+</div>
 
 </div>
 
 <div class="card" id="card">
+  <div class="card-content">
+
+<div class="header">
 
 <h2>محمد النعيمي</h2>
 
-<h3>🤍</h3>
+<div class="heart">🤍</div>
 
 <h2>إلهام العامري</h2>
 
-<p>08 / 08 / 2027</p>
+</div>
 
-<p>الساعة 19:00</p>
+<div class="details">
 
-<p>المحمدية</p>
+<div class="detail">
+
+<span class="icon">📅</span>
+
+<span>08 أغسطس 2027</span>
+
+</div>
+
+<div class="detail">
+
+<span class="icon">🕖</span>
+
+<span>19:00 مساءً</span>
+
+</div>
+
+<div class="detail">
+
+<span class="icon">📍</span>
+
+<span>قاعة أفراح المحمدية</span>
+
+</div>
+
+</div>
+
+<div class="message">
+
+<p>
+
+يسرنا دعوتكم لمشاركتنا فرحتنا
+
+وحضور حفل زفافنا
+
+</p>
+
+</div>
+
+<div class="scroll-text">
+
+⬇ اسحب للأسفل لمشاهدة المزيد ⬇
 
 </div>
 
@@ -227,19 +126,23 @@ pointer-events:none;
 
 </div>
 
-<script>
+</div>
+<div class="footer">
 
-const cover=document.getElementById("cover");
-const card=document.getElementById("card");
+<button id="openInvitation">
 
-cover.addEventListener("click",()=>{
+فتح الدعوة
 
-cover.classList.add("hide");
-card.classList.add("open");
+</button>
 
-});
+</div>
 
-</script>
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
